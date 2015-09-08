@@ -12,11 +12,229 @@
 
     <title>Andrew Zhao</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Navbar Modification CSS -->
+    <link href="css/navbar.css" rel="stylesheet">
+    
+    <!-- Index CSS -->
+    <link href="css/index.css" rel="stylesheet">
+    
+    <!-- Font CSS -->
+    <link href="css/font.css" rel="stylesheet">
+    
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
 
-    <p> Website under Construction, please check back later!</p>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Andrew Zhao</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="projects.html" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="projects.html" class="">Overview</a></li>
+                            <li><a href="personal.html" class="">Personal Projects</a></li>
+                            <li><a href="class.html" class="">Class Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="">Contact Me</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4" id="profile">
+                        <img src="images/profile.jpeg" class="img-circle img-reponsive" width="200" height="200">
+                    </div>
+                    <div class="col-md-8" id="greeting">
+                        <div>
+                            <h1>Nice to meet you! My name is Andrew.</h1>
+                            <h3>I'm a student at UC Berkeley, and I'm interested in you!</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="bg-primary">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>A Little About Me</h2>
+                <hr>
+                <p>I'm a 3rd year CS student at University of California, Berkeley,</p>
+                <p>and I'm interested in both front-end and back-end design.</p>
+                <p>Most importantly, I'm interested in working with you to achieve your dream!</p>
+                <a href="about.html" class="btn btn-default">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bg-white">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Projects I've Worked On</h2>
+                <hr>
+                <p>Here are a few of the things I've enjoyed working on.</p>
+                <a href="about.html" class="btn btn-default">Click to see more</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projectCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#projectCarousel" data-slide-to="1"></li>
+            <li data-target="#projectCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="col-xs-6">
+                    <img src="images/projects/XML_Extraction.png">
+                </div>
+                <div class="col-xs-6">
+                    <h1>Project 1</h1>
+                    <p class="lead">Name</p>
+                    <p>Description</p>
+                    <a class="btn btn-lg btn-primary" href="projects.html">Learn More</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="col-xs-6">
+                    <img src="images/projects/XML_Extraction.png">
+                </div>
+                <div class="col-xs-6">
+                    <h1>Project 2</h1>
+                    <p class="lead">Name</p>
+                    <p>Description</p>
+                    <a class="btn btn-lg btn-primary" href="projects.html">Learn More</a>
+                </div>
+            </div><div class="item">
+                <div class="col-xs-6">
+                    <img src="images/projects/XML_Extraction.png">
+                </div>
+                <div class="col-xs-6">
+                    <h1>Project 3</h1>
+                    <p class="lead">Name</p>
+                    <p>Description</p>
+                    <a class="btn btn-lg btn-primary" href="projects.html">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#projectCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#projectCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </section>
+    
+    <section class="bg-primary">
+        <!-- Contact -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Get In Contact</h2>
+                <hr>
+                <p>Want to know more? Feel free to contact me directly and start a conversation!</p>
+                <div id="contact-info">
+                    <div>
+                        <a href="tel:971-800-1243">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-square fa-stack-2x text-primary fa-inverse"></i>
+                                <i class="fa fa-mobile fa-stack-2x"></i>
+                            </span>
+                            971.800.1243
+                        </a>
+                    </div>
+                    <div>
+                        <a href="mailto:andrewz@berkeley.edu">
+                            <span class="fa-stack fa-2x">
+                                <i class="fa fa-square fa-stack-2x text-primary fa-inverse"></i>
+                                <i class="fa fa-envelope fa-stack-1x"></i>
+                            </span>
+                            andrewz@berkeley.edu
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <ul class="list-inline center-block text-center" id="follow">
+                    <li>
+                        <a href="https://github.com/andrew-zhao">
+                            <i class="fa fa-4x fa-github-square fa-inverse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="www.linkedin.com/in/zhaoandrew">
+                            <i class="fa fa-4x fa-linkedin-square fa-inverse"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Andrew Zhao 2015</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
 
 </body>
 
