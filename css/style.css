@@ -186,43 +186,25 @@ section {
     border-radius: 5px;
 }
 
-.skills-list .skill-html {
-    border-radius: 5px;
-    background-color:#4488dd;
-    color:white;
-}
-
-.skills-list .skill-CSS {
-    border-radius: 5px;
-    background-color:#4488dd;
-    color:white;
-}
-
-.skills-list .skill-js {
-    border-radius: 5px;
-    background-color:#4488dd;
-    color:white;
-}
-
+.skills-list .skill-html,
+.skills-list .skill-CSS,
+.skills-list .skill-js,
 .skills-list .skill-bootstrap {
     border-radius: 5px;
     background-color:#4488dd;
     color:white;
 }
 
-.skills-list .skill-rails {
-    border-radius: 5px;
-    background-color:#dd4455;
-    color:white;
-}
-
+.skills-list .skill-rails,
 .skills-list .skill-MSS {
     border-radius: 5px;
     background-color:#dd4455;
     color:white;
 }
 
-.skills-list .skill-python {
+.skills-list .skill-python,
+.skills-list .skill-geometry-expressions,
+.skills-list .skill-iBook {
     border-radius: 5px;
     background-color:#dd9955;
     color:white;
