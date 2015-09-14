@@ -172,6 +172,10 @@ section {
 
 /* Project Portfolio styling */
 
+.project-portfolio {
+    padding-bottom: 30px;
+}
+
 .project-portfolio .row .col-md-7 img {
     max-height: 450px;
 }
