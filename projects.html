@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Andrew Zhao | About</title>
+    <title>Andrew Zhao | Personal Projects</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,19 +55,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="projects.html" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li class="active"><a href="projects.html" class="">Overview</a></li>
-                            <li><a href="personal.html" class="">Personal Projects</a></li>
-                            <li><a href="class.html" class="">Class Projects</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html#resume" class="">Résumé</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html" class="">Projects</a></li>
+                    <li><a href="resume.html" class="">Résumé</a></li>
                     <li><a href="contact.html" class="">Contact Me</a></li>
                 </ul>
             </div>
@@ -76,9 +66,157 @@
         <!-- /.container -->
     </nav>
     
-    <div class="container" style="height:500px;">
-        <span style="font-size:50px;">UNDER CONSTRUCTION - CHECK BACK LATER</span>
+    <!-- Page Content -->
+    <div class="container project-portfolio">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Personal Projects
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li class="active">Personal Projects</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Project One -->
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/XML_Extraction.png" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-MSS">MS SQL Server</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>XML Extraction</h3>
+                <hr>
+                <h4>Table-driven SQL Server framework for analyzing XML files.</h4>
+                <p>This project was the culmination of my internship at Integra Telecom. This project made pulling all relevant information from XML files as simple as listing the properties in one table, loading the XML in another, and running a stored procedure. I wrote this for the Integra BI team, because they needed lots of information from an ever-growing number of certain XML files. This framework makes it simple to customize the info and easily scales to taking care of as many XML files as possible. I worked closely with team members to find out exactly what they needed, and completed the project thanks to their critique.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Two -->
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/kidsfirstproject.png" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-html">HTML</li>
+                    <li class="skill-CSS">CSS</li>
+                    <li class="skill-bootstrap">Bootstrap</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>Kids First Project</h3>
+                <hr>
+                <h4>Non-profit organization that brings programs and services to homeless youth.</h4>
+                <p>As a relatively new non-profit organization founded and led by <a href="http://www.kidsfirstproject.org/team.html#directors">Alisha Zhao</a>, Kid First Project needed someone to create a website to gain an online presence and help inform others about their cause. Alisha offered me the opportunity to make such a website, so I took the chance. I worked closely with her, figuring out what pages would be essential to the website, as well as how it should be designed to appeal to others. Currently the websites initial version is done, and improvements are being made every week. Please go check it out, and support their cause!</p>
+                <a class="btn btn-primary pull-right" href="http://www.kidsfirstproject.org"><i class="fa fa-2x fa-external-link"></i></a>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Three -->
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/TicTacToe.png" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-html">HTML</li>
+                    <li class="skill-CSS">CSS</li>
+                    <li class="skill-js">Javascript</li>
+                    <li class="skill-rails">Ruby on Rails</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>Tic Tac Toe</h3>
+                <hr>
+                <h4>Two-player Tic Tac Toe web app</h4>
+                <p>My first foray into web design and Ruby on Rails resulted in this simple Tic Tac Toe app. The page is constructed with only HTML and CSS, and the 'buttons' are simply colored div tags. Using javascript I added the ability to click on the buttons, as well as the game logic, such as checks for wins and draws, as well as a restart and undo button. The undo function uses a stack that allows me to configure it to allow for any number of undos (it's currently set to just 1). I really enjoyed this project, I might return to it one day and use a framework for better styling.</p>
+                <a class="btn btn-primary pull-right" href="http://calm-atoll-9489.herokuapp.com/"><i class="fa fa-2x fa-external-link"></i></a>
+                <a class="btn btn-primary pull-right" href="https://github.com/andrew-zhao/TicTacToe" style="margin-right:5px;"><i class="fa fa-2x fa-github"></i></a>
+            </div>
+        </div>
+        <!-- /.row -->
+        
+        <hr>
+        
+        <!-- Project Four -->
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/NPTSP.png" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-python">Python</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>Solving a Travelling Salesman Variant</h3>
+                <hr>
+                <h4>Merge greedy search with 3-opt annealing to solve a NP-hard problem.</h4>
+                <p>Given up to 50 cities in a strongly connected graph, with each edge having some length between 0 - 100 and each city being red or blue, find the shortest path that visits each city exactly once, and does not visit more than 3 cities of one color in a row. Working with a group, I applied greedy search and 3-opt annealing on teh greedy search path and random paths in order to try find the shortest path possible. Our strategy worked relatively well, and landed us in 22nd place in the class competition out of 166 groups.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Project Five -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/text2image.png" style="width:100%;padding-top:200px;padding-bottom:200px;" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-python">Python</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>Text to Image</h3>
+                <hr>
+                <h4>Convert text to .pbm format, then display that in .png format.</h4>
+                <p>This project was actually from reddit, and was in two parts: <a href="https://www.reddit.com/r/dailyprogrammer/comments/2ba3g3/7212014_challenge_172_easy/">easy</a> and <a href="https://www.reddit.com/r/dailyprogrammer/comments/2ba3nf/7232014_challenge172_intermediate_image_rendering/">intermediate</a>. Using python, the idea was to create a program that takes in a text input, and writes it to a .pbm image. However since it's difficult to find a good program to find a .pbm file viewer, the second challenge was to write a program that takes in the text of a .pbm file, and render it. I decided to also take the opportunity to save the pbm file in a .png format to make it easier to view later.</p>
+                <a class="btn btn-primary pull-right" href="https://github.com/andrew-zhao/dailyProgrammer/tree/master/172" style="margin-right:5px;"><i class="fa fa-2x fa-github"></i></a>
+            </div>
+        </div>
+        <!-- /.row -->
+        
+        <hr>
+
+        <!-- Project Six -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <img class="img-responsive img-hover center-block" src="images/projects/euclid.gif" alt="">
+                <ul class="list-inline center-block text-center skills-list" id="follow">
+                    <li>Tools: </li>
+                    <li class="skill-geometry-expressions">Geometry Expressions</li>
+                    <li class="skill-iBook">iBook Author</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h3>Euclid's Elements: Books 1 - 4</h3>
+                <hr>
+                <h4>Design and create an eBook with interactive diagrams.</h4>
+                <p>This project is what I spent my summer at Saltire Software working on. Using their proprietary software and iBook Author, I designed an iBook for Euclid's Elements that included interactive diagrams to help illustrate each proposition. The interactive diagrams took the majority of the time, as I had to come up with a scheme that would be consistent across all diagrams and would be intuitive for users. I ended up with certain points being inputs for users to play around with, while the rest of the diagram was an output that let users watch the effect of their inputs. The color scheme was also chosen to reinforce the ideas of inputs and outputs, making it easier for users to figure out what they could play with. While working on the project, I got my first experience with version control and testing software, as some of the more complicated diagrams broke Geometry Expressions. Whenever that happened I would have to talk with my boss and explain what kind of issue I was having so that he could fix it. The book is on the iTunes store, but diagrams can be seen at <a href="http://euclidsmuse.com">euclidsmuse.com</a>.</p>
+                <a class="btn btn-primary pull-right" href="https://itunes.apple.com/us/book/the-elements/id561961646?mt=11"><i class="fa fa-2x fa-external-link"></i></a>
+                <a class="btn btn-primary pull-right" href="http://euclidsmuse.com/collections/view?id=100" style="margin-right:5px;"><i class="fa fa-2x fa-eye"></i></a>
+            </div>
+        </div>
+        <!-- /.row -->
+    
     </div>
+    <!-- ./container -->
     
     <!-- Footer -->
     <footer class="bg-gray">

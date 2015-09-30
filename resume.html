@@ -28,15 +28,6 @@
     <!-- Font CSS -->
     <link href="css/font.css" rel="stylesheet">
     
-    <style>
-    body {
-        background-color:#444;
-    }
-    header {
-        background-color:#fff;
-    }
-    </style>
-    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,7 +57,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html" class="">Projects</a></li>
-                    <li><a href="resume.html" class="">Résumé</a></li>
+                    <li class="active"><a href="resume.html" class="">Résumé</a></li>
                     <li><a href="contact.html" class="">Contact Me</a></li>
                 </ul>
             </div>
@@ -75,17 +66,21 @@
         <!-- /.container -->
     </nav>
     
-    <header style="text-align:center" class="contact-header">
+    <section class="bg-primary" id="resume">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1>Interested? Want to know more?</h1>
+                    <h1>Résumé</h1>
                     <hr>
-                    <p>Feel free to contact me! I may be busy with school or my hobbies, so I can't guarantee that I'll be able to respond all hours of the day. But send me an email or message and I'll get to you ASAP!</p>
+                    <p>You can find a pdf copy of my résumé <a href="resume/Resume-Zhao-Andrew.pdf"><span style="color:#bbb">here</span></a>.</p>
+                    <hr>
                 </div>
             </div>
+            <div class="row">
+                <iframe src="http://docs.google.com/gview?url=https://andrew-zhao.github.io/resume/Resume-Zhao-Andrew.pdf&embedded=true" style="width:800px; height:1030px;" frameborder="0"></iframe>
+            </div>
         </div>
-    </header>
+    </section>
     
     <!-- Contact -->
     <section class="contact">
