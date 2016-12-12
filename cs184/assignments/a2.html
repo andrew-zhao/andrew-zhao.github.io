@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width-device-width, initial-scale=1">
+		<meta name="description" content="CS184 Assignment 2">
+		<meta name="author" content="Andrew Zhao">
+		<title>CS184 | Andrew Zhao | Assignment 2</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="../css/style.css">
+
+        <style>
+        img {
+            border-radius: 40px;
+        }
+        </style>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../index.html">Return to Main</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="a0.html" class="">Assignment 0</a></li>
+                        <li><a href="a1.html" class="">Assignment 1</a></li>
+                        <li class="active"><a href="#" class="">Assignment 2</a></li>
+                        <li><a href="a3.html" class="">Assignment 3</a></li>
+                        <li><a href="a4.html" class="">Assignment 4</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+		<header>
+			<div class="container">
+				<div class="row">
+					<h1>Assignment 2</h1>
+				</div>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>This assignment was to implement a raytracer. It supports basic object input and renders objects with reflections, shadows and transparency.</p>
+												<small style="color:red">11/16/2016: Updated description of project.</small>
+                        <p>Group Members:</p>
+                        <ul>
+                            <li><a href="http://inst.cs.berkeley.edu/~cs184-acu/">Andrew Zhao</a></li>
+                            <li><a href="http://inst.cs.berkeley.edu/~cs184-abs/">Francis Dooling</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-01.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Arbitrarily oriented ellipsoid</p>
+												<small>0.674029 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-01 -w 500 -h 500 -o input-01</p></pre>
+												<a href="../as2-files/input-01">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-02.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Reading in .obj file, translation, reflection, point light, and directional light.</p>
+												<p>Requires tet.obj to be in the same file.</p>
+												<small>0.674069 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-02 -w 1000 -h 1000 -o input-02.ppm</p></pre>
+												<a href="../as2-files/input-02">Input File</a>
+												<a href="../as2-files/tet.obj">OBJ File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-03.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Simple Phong shading in color.</p>
+												<small>0.067092 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-03 -w 500 -h 500 -o image-03.ppm</p></pre>
+												<a href="../as2-files/input-03">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-04.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Compute shadows</p>
+												<small>0.09212 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-04 -w 500 -h 500 -o image-04.ppm</p></pre>
+												<a href="../as2-files/input-04">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-05.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Compute reflections</p>
+												<small>0.393129 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-05 -w 500 -h 500 -o image-05.ppm</p></pre>
+												<a href="../as2-files/input-05">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-06.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Applying linear transformations to objects</p>
+												<small>0.049765 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-06 -w 500 -h 500 -o image-06.ppm</p></pre>
+												<a href="../as2-files/input-06">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-07.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Point lights</p>
+												<small>0.078587 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-07 -w 500 -h 500 -o image-07.ppm</p></pre>
+												<a href="../as2-files/input-07">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-08.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Directional Lights</p>
+												<small>0.077172 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-08 -w 500 -h 500 -o image-08.ppm</p></pre>
+												<a href="../as2-files/input-08">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-09.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Transparency with refraction</p>
+												<small>0.230226 seconds</small>
+												<p></p>
+                        <pre><p>./as2 input-09 -w 500 -h 500 -o input-09.ppm</p></pre>
+												<a href="../as2-files/input-09">Input File</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as2-10.bmp"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Anti-aliasing with 16 jittered rays through each pixel</p>
+												<small>0.942182 second</small>
+												<p></p>
+                        <pre><p>./as2 input-10 -w 500 -h 500 -o input-10.ppm -aa 16</p></pre>
+												<a href="../as2-files/input-10">Input File</a>
+                    </div>
+                </div>
+			</div>
+		</section>
+        <footer>
+            <div style="padding: 20px;"></div>
+        </footer>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+header {
+	padding-top: 75px;
+    padding-bottom: 25px;
+}
+
+/* Background Image */
+
+html {
+    background: linear-gradient(
+                    rgba(0, 0, 0, 0.8),
+                    rgba(0, 0, 0, 0.95)
+                ),
+                url("https://raw.githubusercontent.com/andrew-zhao/andrew-zhao.github.io/master/images/about/experiences.jpg")
+                no-repeat center center fixed;
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background: none;
+}
+
+
+h1, h2, p, li, small {
+    color: white;
+}
+
+a {
+    color: #05a;
+}
+
+pre > p,
+.list-group a,
+.list-group p {
+    color: #555;
+}

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width-device-width, initial-scale=1">
+		<meta name="description" content="CS184 Assignment 3">
+		<meta name="author" content="Andrew Zhao">
+		<title>CS184 | Andrew Zhao | Assignment 3</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="../css/style.css">
+
+        <style>
+        img {
+            border-radius: 40px;
+        }
+        </style>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../index.html">Return to Main</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="a0.html" class="">Assignment 0</a></li>
+                        <li><a href="a1.html" class="">Assignment 1</a></li>
+                        <li><a href="a2.html" class="">Assignment 2</a></li>
+                        <li class="active"><a href="#" class="">Assignment 3</a></li>
+                        <li><a href="a4.html" class="">Assignment 4</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+		<header>
+			<div class="container">
+				<div class="row">
+					<h1>Assignment 3</h1>
+				</div>
+			</div>
+		</header>
+		<section>
+			<div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>This assignment was to implement tesselation of Bezier Surfaces using uniform and adaptive tesslation methods.
+												To help show the different features, animations are included at the bottom of the page. The images and animations
+												use a white light on the right and a blueish light on the left. Uniform subdivision renders with a reddish material
+												while adaptive subdivision renders with a blue material.</p>
+												<p>Right click and select "Open image in new tab" to see full size images.</p>
+                        <p>Group Members:</p>
+                        <ul>
+                            <li><a href="http://inst.cs.berkeley.edu/~cs184-acu/">Andrew Zhao</a></li>
+                            <li><a href="http://inst.cs.berkeley.edu/~cs184-abs/">Francis Dooling</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+										<div class="col-md-4">
+                        <h2 class="text-center">Arch</h2>
+                    </div>
+										<div class="col-md-4">
+                        <h2 class="text-center">Teacup</h2>
+                    </div>
+										<div class="col-md-4">
+                        <h2 class="text-center">Teapot</h2>
+                    </div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Rotation</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-rotation.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-rotation.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-rotation.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Translation</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-translation.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-translation.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-translation.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Zoom</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-zoom.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-zoom.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-zoom.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Uniform tessellation: Flat</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-flat.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-flat.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-flat.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Uniform tessellation: Wireframe</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Uniform tessellation: Smooth Shading</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .1</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .1</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Adaptive tessellation: Flat</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-a-flat.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-a-flat.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-a-flat.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Adaptive tessellation: Wireframe</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-a-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-a-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-a-wireframe.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+										<div class="col-md-12">
+												<h2 class="text-center">Adaptive tessellation: Smooth Shading</h2>
+                    </div>
+										<br>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-arch-a-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teacup-a-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+												<img class="img-responsive center-block" src="../images/as3-teapot-a-smooth.png"/>
+										</div>
+										<div class="col-md-4">
+                        <pre><p>./as3 arch.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teacup.bez .01 -a</p></pre>
+                    </div>
+										<div class="col-md-4">
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-rotation.gif"/>
+                    </div>
+                    <div class="col-md-8">
+											<p>Animation showing rotation on an object.</p>
+											<p></p>
+											<pre><p>./as3 teapot.bez .2</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-transform.gif"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Animation showing translating an object and zooming in/out.</p>
+												<p></p>
+                        <pre><p>./as3 teapot.bez .2</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-wireframe.gif"/>
+                    </div>
+                    <div class="col-md-8">
+											<p>Animation showing the wireframe of an object with uniform tessellation.</p>
+											<p></p>
+											<pre><p>./as3 teapot.bez .2</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-shading.gif"/>
+                    </div>
+                    <div class="col-md-8">
+											<p>Animation showing smooth/flat shading on a uniformly tessellated object.</p>
+											<p></p>
+											<pre><p>./as3 teapot.bez .2</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-a-rotation.gif"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Animation showing adaptive tessellation.</p>
+												<p></p>
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-a-wireframe.gif"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Animation showing the wireframe of an object with adaptive tessellation.</p>
+												<p></p>
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+								<div class="row">
+                    <div class="col-md-4">
+                        <img class="img-responsive center-block" src="../images/as3-a-shading.gif"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Animation showing smooth/flat shading with adaptive tessellation.</p>
+												<p></p>
+                        <pre><p>./as3 teapot.bez .01 -a</p></pre>
+                    </div>
+                </div>
+                <br>
+			</div>
+		</section>
+        <footer>
+            <div style="padding: 20px;"></div>
+        </footer>
+	</body>
+</html>

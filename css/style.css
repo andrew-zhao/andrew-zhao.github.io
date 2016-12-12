@@ -2,7 +2,7 @@ header {
     padding-top: 50px;
     padding-bottom:70px;
 }
-    
+
 
 #profile {
     text-align: center;
@@ -192,25 +192,33 @@ section {
 
 .skills-list .skill-html,
 .skills-list .skill-CSS,
-.skills-list .skill-js,
 .skills-list .skill-bootstrap {
     border-radius: 5px;
-    background-color:#4488dd;
+    background-color:#44dd88;
     color:white;
 }
 
 .skills-list .skill-rails,
-.skills-list .skill-MSS {
+.skills-list .skill-js {
     border-radius: 5px;
-    background-color:#dd4455;
+    background-color:#3499dd;
     color:white;
 }
 
 .skills-list .skill-python,
-.skills-list .skill-geometry-expressions,
-.skills-list .skill-iBook {
+.skills-list .skill-c,
+.skills-list .skill-opengl,
+.skills-list .skill-MSS {
     border-radius: 5px;
-    background-color:#dd9955;
+    background-color:#88dd44;
+    color:white;
+}
+
+.skills-list .skill-geometry-expressions,
+.skills-list .skill-iBook,
+.skills-list .skill-figma {
+    border-radius: 5px;
+    background-color:#ee3355;
     color:white;
 }
 
