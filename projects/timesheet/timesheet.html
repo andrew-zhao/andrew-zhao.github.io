@@ -1,0 +1,22 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="timesheet.js"></script>
+</head>
+<body>
+	<h1>Time Clock</h1>
+	<div>
+		<h2>Current Time</h2>
+		<h3 id="currentTime"></h3>
+		<h3 id="currentMessage"></h3>
+	</div>
+	<div>
+		<form id="timeForm">
+		Set your times:
+		<input type="time" id="inputTime">
+		</form>
+		<button class="timeButton" type="button" onclick="logTime(this)" value="day_in">In for Day</button>
+		<button class="timeButton" type="button" onclick="logTime(this)" value="lunch_out">Going to Lunch</button>
+		<button class="timeButton" type="button" onclick="logTime(this)" value="lunch_in">Back from Lunch</button>
+		<button class="timeButton" type="button" onclick="logTime(this)" value="day_out">Out for Day</button>
+	</div>
+</body>
