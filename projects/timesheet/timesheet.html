@@ -1,0 +1,58 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="timesheet.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="timesheet.css">
+	<title>Time Tracker</title>
+</head>
+<body>
+	<div>
+		<div class="container">
+			<div class="row top-buffer justify-content-center">
+				<div id="pageTitle" class="col-md-12">
+					<h1>Time Clock</h1>
+				</div>
+			</div>
+			<div class="row top-buffer justify-content-center">
+				<div class="col-md-6 current-time">
+					<h2>Current Time</h2>
+					<p id="currentTime"></p>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div id="currentMessage" class="col-md-12">
+				</div>
+			</div>
+			<div class="row top-buffer justify-content-center">
+				<form id="timeForm">
+				Input your time:
+				<input type="time" id="inputTime">
+				</form>
+			</div>
+			<div class="row top-buffer justify-content-center">
+				<div class="clock-button col-sm-2">
+					<button class="timeButton btn btn-lg" type="button" onclick="logTime(this)" value="day_in">In for Day</button>
+				</div>
+				<div class="clock-button col-sm-2">
+					<button class="timeButton btn btn-lg" type="button" onclick="logTime(this)" value="lunch_out">Going to Lunch</button>
+				</div>
+				<div class="clock-button col-sm-2">
+					<button class="timeButton btn btn-lg" type="button" onclick="logTime(this)" value="lunch_in">Back from Lunch</button>
+				</div>
+				<div class="clock-button col-sm-2">
+					<button class="timeButton btn btn-lg" type="button" onclick="logTime(this)" value="day_out">Out for Day</button>
+				</div>
+				<div class="clock-button col-sm-2">
+					<button class="timeButton btn btn-lg" type="button" onclick="resetLog()">Reset Timesheet</button>
+				</div>
+			</div>
+			<div class="row top-buffer justify-content-center">
+				<div class="error-container col-sm-6">
+					<div id="errorMessage" class="alert alert-danger">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

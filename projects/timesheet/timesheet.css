@@ -1,0 +1,40 @@
+body {
+	font-family: 'Barlow Condensed', sans-serif;
+}
+
+#errorMessage {
+	display: none;
+}
+
+.top-buffer {
+	margin-top:20px;
+}
+
+#currentMessage {
+	text-align: center;
+	font-size: 2em;
+}
+
+.current-time {
+	text-align: center;
+}
+
+.clock-button {
+	text-align: center;
+}
+
+.error-container {
+	text-align: center;
+}
+
+#pageTitle {
+	text-align: center;
+}
+
+#timeForm {
+	font-size: 1.5em;
+}
+
+#currentTime {
+	font-size: 3em;
+}
