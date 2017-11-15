@@ -72,6 +72,11 @@ function convertTimeToPrettyTime(minutes) {
 	return [Math.floor(minutes/60), minutes % 60];
 }
 
+// Convert hours and minutes to minutes
+function convertPrettyTimeToTime(hours, minutes) {
+	return 60 * hours + minutes;
+}
+
 // Convert date to input time
 function convertDateToMinutes(date) {
 	return 60 * date.getHours() + date.getMinutes();
@@ -99,7 +104,8 @@ function calculateTimeWorked(timesheetLog, date) {
 }
 
 // Check if a meal break was taken
-function mealBreakExists(timesheetLog) {
+function mealBreaks(timesheetLog) {
+	let breaks = 0;
 	let breakStart = false;
 	let breakEnd = false;
 	for (i = 0; i < timesheetLog.length; i++) {
@@ -109,43 +115,42 @@ function mealBreakExists(timesheetLog) {
 			breakStart = true;
 		}
 		if (breakStart && breakEnd) {
-			return true;
+			breaks += 1;
+			breakStart = false;
+			breakEnd = false;
 		}
 	}
-	return false;
+	return breaks;
+}
+
+function estimateTimeLeft(currentHours, currentMinutes, targetHours, targetMinutes) {
+	let currentTime = convertPrettyTimeToTime(currentHours, currentMinutes);
+	let targetTime = convertPrettyTimeToTime(targetHours, targetMinutes);
+	
+	return convertTimeToPrettyTime(targetTime - currentTime);
+}
+
+function addTime(currentHour, currentMinute, hoursToAdd, minutesToAdd) {
+	let currentTime = convertPrettyTimeToTime(currentHour, currentMinute);
+	let timeToAdd = convertPrettyTimeToTime(hoursToAdd, minutesToAdd);
+	
+	return convertTimeToPrettyTime(currentTime + timeToAdd);
 }
 
 // Generate a message to estimate when to clock out at the end of the day
 function endOfDayMessage(hours, minutes, date, timesheetLog) {
-	let remainingMinutes = 60 - minutes;
-	let remainingHours = 8 - hours;
-	if (remainingMinutes > 0) {
-		remainingHours -= 1;
-	}
+	let [remainingHours, remainingMinutes] = estimateTimeLeft(hours, minutes, 8, 0)
 	
-	if (!mealBreakExists(timesheetLog)) {
+	if (mealBreaks(timesheetLog) === 0) {
 		remainingMinutes += 30;
 	}
 	
-	let endOfDayHours = date.getHours() + remainingHours;
-	let endOfDayMinutes = date.getMinutes() + remainingMinutes;
-	
-	while (endOfDayMinutes >= 60){
-		endOfDayMinutes -= 60;
-		endOfDayHours += 1;
-	}
+	let [endOfDayHours, endOfDayMinutes] = addTime(date.getHours(), date.getMinutes(), remainingHours, remainingMinutes);
 	
 	return `Estimated end of day is ${prettyTime(endOfDayHours, endOfDayMinutes)}.`;
 }
 
 // Update displayed message
-// Need to add:
-//   How long you've worked (clocked in) (done)
-//   How long you've been on break (lunch break) (done)
-//   How long you worked (post clock out) (done)
-//   When you need to take next meal break (clocked in)
-//   How long you were on lunch break (after lunch break) (done)
-//   How long until 2nd lunch break
 function updateMessage() {
 	let timesheetLog = localStorage.getObj(storageKey);
 	let date = new Date();
@@ -162,7 +167,10 @@ function updateMessage() {
 	} else {
 		let currentStatus = getLastItem(localStorage.getObj(storageKey))[0];
 		let [hours, minutes] = convertTimeToPrettyTime(calculateTimeWorked(timesheetLog, date));
+		let totalBreaks = mealBreaks(timesheetLog);
 		let message;
+		
+		// Check status
 		if (currentStatus === dayIn) {
 			message = `You've worked for ${hours} hours and ${minutes} minutes today.`;
 			if (hours < 8) {
@@ -193,20 +201,57 @@ function updateMessage() {
 			message = `You worked ${hours} hours and ${minutes} minutes during your last shift. Thanks for your hard work!`;
 		}
 		
+		// Check for meal breaks
+		if (totalBreaks === 0 && (currentStatus === dayIn || currentStatus === mealIn)) {
+			if (hours < 5) {
+				let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 5, 0);
+				let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
+				message += ` You must take a meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.`;
+			} else {
+				message += ` You need to take a meal break.`;
+			}
+		} else if (totalBreaks === 1 && hours > 8 && (currentStatus === dayIn || currentStatus === mealIn)) {
+			if (hours < 10) {
+				let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 10, 0);
+				let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
+				message += ` You must take a second meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.`;
+			} else {
+				message += ` You need to take a meal break.`;
+			}
+		}
+		
+		// Set the message
 		$('#currentMessage').html(message);
 	}
 	
 }
 
-function raiseError(buttonValue) {
-	console.log(`Invalid input '${buttonValue}'`);
+function raiseError(errorCode, text = null) {
+	if (errorCode === 1) {
+		if (debug === true) {
+			console.log(`Invalid input '${text}'`);
+		}
+		$('#errorMessage').html("<strong>Error!</strong> Invalid button type. Did you click the right button?");
+	} else if (errorCode === 2) {
+		$('#errorMessage').html("<strong>Error!</strong> Invalid input time. Please enter a time.");
+	}
+	$('#errorMessage').css("display", "block");
+}
+
+function resetError() {
+	$('#errorMessage').html("");
+	$('#errorMessage').css("display", "none");
 }
 
 
 // Define time button behavior
 function logTime(timeButton) {
+	resetError();
 	let buttonValue = timeButton.value;
 	let inputTime = $('#inputTime').val();
+	if (!inputTime) {
+		return raiseError(2);
+	}
 	let lastLogItem = getLastItem(localStorage.getObj(storageKey));
 	if (debug === true) {
 		console.log(`Button value: ${buttonValue}`);
@@ -217,22 +262,22 @@ function logTime(timeButton) {
 	switch(buttonValue) {
 		case dayIn:
 			if (lastLogItem && lastLogItem[0] != dayOut) {
-				return raiseError(buttonValue);
+				return raiseError(1, buttonValue);
 			}
 			break;
 		case dayOut:
 			if (!lastLogItem || (lastLogItem[0] != dayIn && lastLogItem[0] != mealIn)) {
-				return raiseError(buttonValue);
+				return raiseError(1, buttonValue);
 			}
 			break;
 		case mealIn:
 			if (!lastLogItem || lastLogItem[0] != mealOut) {
-				return raiseError(buttonValue);
+				return raiseError(1, buttonValue);
 			}
 			break;
 		case mealOut:
 			if (!lastLogItem || (lastLogItem[0] != dayIn && lastLogItem[0] != mealIn)) {
-				return raiseError(buttonValue);
+				return raiseError(1, buttonValue);
 			}
 			break;
 		default:
@@ -247,6 +292,7 @@ function logTime(timeButton) {
  * Startup functions *
  *********************/
 
+ // TODO: set up reset 
 $( document ).ready(function() {
 	// Initialize time
 	let date = new Date();
