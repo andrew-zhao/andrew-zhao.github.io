@@ -84,7 +84,6 @@ function convertDateToMinutes(date) {
 
 // Calculates total time worked and returns total minutes
 // Validation already performed in logTime
-// TODO: Loop and figure out time worked
 function calculateTimeWorked(timesheetLog, date) {
 	if (timesheetLog.length === 0) {
 		return 0;
