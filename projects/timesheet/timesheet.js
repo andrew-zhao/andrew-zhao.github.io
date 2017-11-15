@@ -1,10 +1,15 @@
 const storageKey = "timesheetLog";
-const dayIn = "day_in";
-const dayOut = "day_out";
-const mealIn = "lunch_in";
-const mealOut = "lunch_out";
+const dateKey    = "timesheetDate";
+const dayIn      = "day_in";
+const dayOut     = "day_out";
+const mealIn     = "lunch_in";
+const mealOut    = "lunch_out";
 
-const debug = true;
+const debug = false;
+
+/********************
+ * Helper functions *
+ ********************/
 
 Storage.prototype.setObj = function(key, obj) {
     return this.setItem(key, JSON.stringify(obj))
@@ -34,10 +39,12 @@ function prettyTime(hours, minutes) {
 function dateLoop() {
 	let intervalID = setInterval(function () {
 		let date = new Date();
-		if (date.getSeconds() === 0) {
-			$("#currentTime").text(prettyTime(date.getHours(), date.getMinutes()));
-			updateMessage();
+		if (localStorage.getObj(dateKey) === null
+				|| localStorage.getObj(dateKey) != getDateString(date)) {
+			resetLog();
 		}
+		$("#currentTime").text(prettyTime(date.getHours(), date.getMinutes()));
+		updateMessage();
 	}, 1000);
 };
 
@@ -48,10 +55,17 @@ function getLastItem(arr) {
 	return arr[arr.length - 1];
 }
 
+function getDateString(date) {
+	let day = date.getDay();
+	if (day < 10) {
+		day = day.toString().padStart(2, "0");
+	}
+	return `${date.getFullYear()}-${date.getMonth()}-${day}`;
+}
+
 /*************************
  * Time update functions *
  *************************/
-
 
 // Store time in local storage
 function storeTime(storageKey, buttonValue, inputTime) {
@@ -122,6 +136,7 @@ function mealBreaks(timesheetLog) {
 	return breaks;
 }
 
+// Estimate hours and minutes left between current time and target time
 function estimateTimeLeft(currentHours, currentMinutes, targetHours, targetMinutes) {
 	let currentTime = convertPrettyTimeToTime(currentHours, currentMinutes);
 	let targetTime = convertPrettyTimeToTime(targetHours, targetMinutes);
@@ -129,6 +144,7 @@ function estimateTimeLeft(currentHours, currentMinutes, targetHours, targetMinut
 	return convertTimeToPrettyTime(targetTime - currentTime);
 }
 
+// Add specified hours and minutes to the current hours and minutes
 function addTime(currentHour, currentMinute, hoursToAdd, minutesToAdd) {
 	let currentTime = convertPrettyTimeToTime(currentHour, currentMinute);
 	let timeToAdd = convertPrettyTimeToTime(hoursToAdd, minutesToAdd);
@@ -225,6 +241,10 @@ function updateMessage() {
 	
 }
 
+/*******************
+ * Error functions *
+ *******************/
+
 function raiseError(errorCode, text = null) {
 	if (errorCode === 1) {
 		if (debug === true) {
@@ -242,6 +262,9 @@ function resetError() {
 	$('#errorMessage').css("display", "none");
 }
 
+/******************
+ * Button scripts *
+ ******************/
 
 // Define time button behavior
 function logTime(timeButton) {
@@ -287,24 +310,32 @@ function logTime(timeButton) {
 	updateMessage();
 }
 
+// Clear the log
+function resetLog() {
+	localStorage.setObj(dateKey, getDateString(new Date()));
+	localStorage.setObj(storageKey, new Array());
+	updateMessage();
+}
+
 /*********************
  * Startup functions *
  *********************/
 
- // TODO: set up reset 
 $( document ).ready(function() {
 	// Initialize time
 	let date = new Date();
 	$("#currentTime").text(prettyTime(date.getHours(), date.getMinutes()));
 	
 	// Initialize localStorage
-	if (localStorage.getItem(storageKey) === null || debug === true) {
-		localStorage.setObj(storageKey, new Array());
+	if (localStorage.getObj(storageKey) === null
+			|| localStorage.getObj(dateKey) === null
+			|| localStorage.getObj(dateKey) != getDateString(date)
+			|| debug === true) {
+		resetLog();
 	}
 	
 	updateMessage();
 	
 	// Start looping
 	dateLoop();
-	
 });
