@@ -1,9 +1,11 @@
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="timesheet.js"></script>
+	<script src="js/timesheet.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link rel="stylesheet" href="timesheet.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/timesheet.css">
 	<title>Time Tracker</title>
 </head>
 <body>
@@ -51,6 +53,17 @@
 				<div class="error-container col-sm-6">
 					<div id="errorMessage" class="alert alert-danger">
 					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row top-buffer justify-content-center">
+				<div id="disclaimer" class="col-sm-12">
+					<p>This app does not clock your time, it only calculates times for you. Please track your time on your timesheet.</p>
+				</div>
+			</div>
+			<div class="row top-buffer justify-content-center">
+				<div class="col-sm-12 external-links">
+					<a href="https://github.com/andrew-zhao/andrew-zhao.github.io/tree/master/projects/timesheet"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>

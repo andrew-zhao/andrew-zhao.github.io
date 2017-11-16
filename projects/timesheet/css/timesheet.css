@@ -38,3 +38,19 @@ body {
 #currentTime {
 	font-size: 3em;
 }
+
+.external-links {
+	text-align: center;
+}
+
+.external-links a {
+	color: black;
+}
+
+.info-message {
+	margin-bottom: 0;
+}
+
+#disclaimer {
+	text-align: center;
+}

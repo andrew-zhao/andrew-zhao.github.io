@@ -178,61 +178,63 @@ function updateMessage() {
 		} else {
 			greeting = "Good evening!";
 		}
-		$('#currentMessage').html(`${greeting} You have not clocked in today.`);
+		$('#currentMessage').html(`<p class="info-message">${greeting} You have not clocked in today.</p>`);
 	} else {
 		let currentStatus = getLastItem(localStorage.getObj(storageKey))[0];
 		let [hours, minutes] = convertTimeToPrettyTime(calculateTimeWorked(timesheetLog, date));
 		let totalBreaks = mealBreaks(timesheetLog);
 		let message;
 		
-		// Check status
+		// Initial message
 		if (currentStatus === dayIn) {
-			message = `You've worked for ${hours} hours and ${minutes} minutes today.`;
-			if (hours < 8) {
-				message += ` ${endOfDayMessage(hours, minutes, date, timesheetLog)}`;
-			}
+			message = `<p class="info-message">You've worked for ${hours} hours and ${minutes} minutes today.</p>`;
 		} else if (currentStatus === mealOut) {
 			let [mealHours, mealMinutes] = convertTimeToPrettyTime(convertDateToMinutes(date)
 																	- parseStoredTime(getLastItem(timesheetLog)[1]));
 			if (mealHours > 0) {
-				message = `You've been on break for ${mealHours} hours and ${mealMinutes} minutes.`;
+				message = `<p class="info-message">You've been on break for ${mealHours} hours and ${mealMinutes} minutes.</p>`;
 			} else {
-				message = `You've been on break for ${mealMinutes} minutes.`;
+				message = `<p class="info-message">You've been on break for ${mealMinutes} minutes.</p>`;
 			}
 		} else if (currentStatus === mealIn) {
-			message = `You've worked for ${hours} hours and ${minutes} minutes today.`
-			let [mealHours, mealMinutes] = convertTimeToPrettyTime(parseStoredTime(getLastItem(timesheetLog)[1])
-																	- parseStoredTime(timesheetLog[timesheetLog.length - 2][1]));
-			if (mealHours > 0) {
-				message += ` Your last break was ${mealHours} hours and ${mealMinutes} minutes long.`;
-			} else {
-				message += ` Your last break was ${mealMinutes} minutes long.`;
-			}
-			
+			message = `<p class="info-message">You've worked for ${hours} hours and ${minutes} minutes today.</p>`
 			if (hours < 8) {
-				message += ` ${endOfDayMessage(hours, minutes, date, timesheetLog)}`;
+				let [mealHours, mealMinutes] = convertTimeToPrettyTime(parseStoredTime(getLastItem(timesheetLog)[1])
+																		- parseStoredTime(timesheetLog[timesheetLog.length - 2][1]));
+				if (mealHours > 0) {
+					message += `<p class="info-message">Your last break was ${mealHours} hours and ${mealMinutes} minutes long.</p>`;
+				} else {
+					message += `<p class="info-message">Your last break was ${mealMinutes} minutes long.</p>`;
+				}
 			}
 		} else if (currentStatus === dayOut) {
-			message = `You worked ${hours} hours and ${minutes} minutes during your last shift. Thanks for your hard work!`;
+			message = `<p class="info-message">You worked ${hours} hours and ${minutes} minutes during your last shift. Thanks for your hard work!</p>`;
 		}
 		
 		// Check for meal breaks
-		if (totalBreaks === 0 && (currentStatus === dayIn || currentStatus === mealIn)) {
-			if (hours < 5) {
-				let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 5, 0);
-				let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
-				message += ` You must take a meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.`;
-			} else {
-				message += ` You need to take a meal break.`;
+		if (currentStatus === dayIn || currentStatus === mealIn) {
+			if (totalBreaks === 0 && hours >= 2) {
+				if (hours < 5) {
+					let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 5, 0);
+					let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
+					message += `<p class="text-warning info-message">You must take a meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.</p>`;
+				} else {
+					message += `<p class="text-danger info-message">You need to take a meal break.</p>`;
+				}
+			} else if (totalBreaks === 1 && hours >= 8) {
+				if (hours < 10) {
+					let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 10, 0);
+					let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
+					message += `<p class="text-warning info-message">You must take a second meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.</p>`;
+				} else {
+					message += `<p class="text-danger info-message">You need to take a meal break.</p>`;
+				}
 			}
-		} else if (totalBreaks === 1 && hours > 8 && (currentStatus === dayIn || currentStatus === mealIn)) {
-			if (hours < 10) {
-				let [estimatedHours, estimatedMinutes] = estimateTimeLeft(hours, minutes, 10, 0);
-				let [mealTimeHours, mealTimeMinutes] = addTime(date.getHours(), date.getMinutes(), estimatedHours, estimatedMinutes);
-				message += ` You must take a second meal break by ${prettyTime(mealTimeHours, mealTimeMinutes)}.`;
-			} else {
-				message += ` You need to take a meal break.`;
-			}
+		}
+		
+		// End of day message
+		if (hours < 8 && (currentStatus === dayIn || currentStatus === mealIn)) {
+			message += `<p class="info-message">${endOfDayMessage(hours, minutes, date, timesheetLog)}</p>`;
 		}
 		
 		// Set the message
@@ -272,7 +274,8 @@ function logTime(timeButton) {
 	let buttonValue = timeButton.value;
 	let inputTime = $('#inputTime').val();
 	if (!inputTime) {
-		return raiseError(2);
+		let date = new Date();
+		inputTime = `${date.getHours()}:${date.getMinutes()}`;
 	}
 	let lastLogItem = getLastItem(localStorage.getObj(storageKey));
 	if (debug === true) {
