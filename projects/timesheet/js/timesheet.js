@@ -256,12 +256,12 @@ function raiseError(errorCode, text = null) {
 	} else if (errorCode === 2) {
 		$('#errorMessage').html("<strong>Error!</strong> Invalid input time. Please enter a time.");
 	}
-	$('#errorMessage').css("display", "block");
+	$('#errorMessage').removeClass('invisible');
 }
 
 function resetError() {
 	$('#errorMessage').html("");
-	$('#errorMessage').css("display", "none");
+	$('#errorMessage').addClass('invisible');
 }
 
 /******************
@@ -317,6 +317,7 @@ function logTime(timeButton) {
 function resetLog() {
 	localStorage.setObj(dateKey, getDateString(new Date()));
 	localStorage.setObj(storageKey, new Array());
+	$('#inputTime').val('');
 	updateMessage();
 }
 
