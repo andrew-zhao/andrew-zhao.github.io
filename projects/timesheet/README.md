@@ -1,14 +1,16 @@
 # Timesheet Tracker
+
+Find the app at http://andrewzhao.me/projects/timesheet/timesheet.html
+
+## Issues / Bugs
+
+Open up an issue in Github (tab at the top of the page), and describe the issue. Tag it with the timesheet project tag. I'll try to get it when I have time!
  
 ## Getting Started
-
-### Running Locally
-
-Simply clone the repository and open the html file.
-
-## Requests
-
-If you have a feature request, feel free to open an issue here on GitHub. Please tag it as project-timesheet.
+ 
+## Contributing
+ 
+Pull requests are welcome from anyone!
 
 ## Maintainers
  
