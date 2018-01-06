@@ -1,17 +1,11 @@
-# Timesheet Tracker
+# Personal Website
 
-Find the app at http://andrewzhao.me/projects/timesheet/timesheet.html
+Located at http://andrewzhao.me
 
 ## Issues / Bugs
 
-Open up an issue in Github (tab at the top of the page), and describe the issue. Tag it with the timesheet project tag. I'll try to get it when I have time!
+Open up an issue in Github (tab at the top of the page), and describe the issue. I'll try to get to it when I have time!
  
-## Getting Started
- 
-## Contributing
- 
-Pull requests are welcome from anyone!
-
 ## Maintainers
  
 Andrew Zhao
